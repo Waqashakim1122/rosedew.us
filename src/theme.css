@@ -1,0 +1,99 @@
+/* ------------------------------
+ GLOBAL THEME COLORS
+--------------------------------*/
+:root {
+  --primary: #111827; /* Deep charcoal luxury */
+  --secondary: #f8c146; /* Gold tone for jewelry */
+  --accent: #d946ef; /* Fashion pink-purple */
+  --light: #f9fafb;
+  --dark: #0f0f0f;
+
+  /* Text colors */
+  --text-dark: #1f2937;
+  --text-light: #6b7280;
+
+  /* Neutral palette */
+  --gray-100: #f3f4f6;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+
+  /* Spacing system */
+  --space-xs: 6px;
+  --space-sm: 12px;
+  --space-md: 20px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 6px rgba(0,0,0,0.07);
+  --shadow-md: 0 4px 14px rgba(0,0,0,0.1);
+  --shadow-lg: 0 12px 32px rgba(0,0,0,0.18);
+
+  /* Font sizes */
+  --fs-sm: 0.95rem;
+  --fs-base: 1.05rem;
+  --fs-lg: 1.3rem;
+  --fs-xl: 2.1rem;
+
+  /* Font families */
+  --font-main: "Poppins", sans-serif;
+  --font-title: "Playfair Display", serif;
+}
+
+/* Apply font globally */
+body {
+  font-family: var(--font-main);
+  color: var(--text-dark);
+  background: white;
+}
+
+/* Headings use elegant serif */
+h1, h2, h3 {
+  font-family: var(--font-title);
+}
+
+/* Buttons */
+.btn-theme-primary {
+  background: var(--primary);
+  color: white;
+  padding: 12px 26px;
+  border-radius: var(--radius-md);
+  transition: 0.3s;
+}
+.btn-theme-primary:hover {
+  background: #000;
+}
+
+.btn-theme-gold {
+  background: var(--secondary);
+  color: #111;
+  padding: 12px 26px;
+  border-radius: var(--radius-md);
+  transition: 0.3s;
+}
+.btn-theme-gold:hover {
+  background: #e0b03e;
+}
+
+/* Card style */
+.card-theme {
+  padding: var(--space-md);
+  background: white;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: 0.3s;
+}
+.card-theme:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* Section spacing */
+.section {
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
+}

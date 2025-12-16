@@ -1,0 +1,228 @@
+/* =========================================
+   GLOBAL THEME — Soft Nude Minimal
+========================================= */
+:root {
+  --nude: #f4e9e2;
+  --nude-light: #f7f1ec;
+  --nude-dark: #e5d4c8;
+
+  --text-dark: #3a3230;
+  --text-soft: #6b605d;
+
+  --white: #ffffff;
+  --shadow: rgba(0, 0, 0, 0.08);
+}
+
+/* Reset */
+body {
+  background: var(--white);
+  color: var(--text-dark);
+  font-family: "Poppins", sans-serif;
+}
+
+/* Highlight Text */
+.highlight {
+  color: var(--text-dark);
+  background: var(--nude);
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+/* =========================================
+   HERO SECTION
+========================================= */
+.hero-section {
+  height: 85vh;
+  background: linear-gradient(
+    to bottom right,
+    var(--white),
+    var(--nude-light)
+  );
+  padding: 20px;
+}
+
+.hero-title {
+  font-size: 3rem;
+  color: var(--text-dark);
+}
+
+.hero-subtitle {
+  color: var(--text-soft);
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
+
+/* Buttons */
+.btn-main {
+  background: var(--text-dark);
+  color: var(--white);
+  border-radius: 30px;
+  transition: 0.3s;
+}
+
+.btn-main:hover {
+  background: var(--nude-dark);
+  color: var(--text-dark);
+}
+
+.btn-outline-main {
+  border: 2px solid var(--text-dark);
+  color: var(--text-dark);
+  border-radius: 30px;
+  transition: 0.3s;
+}
+
+.btn-outline-main:hover {
+  background: var(--text-dark);
+  color: var(--white);
+}
+
+.btn-soft {
+  background: var(--nude);
+  color: var(--text-dark);
+  border-radius: 30px;
+  transition: 0.3s;
+}
+
+.btn-soft:hover {
+  background: var(--nude-dark);
+}
+
+/* =========================================
+   FEATURED PRODUCTS
+========================================= */
+.section-title {
+  color: var(--text-dark);
+}
+
+.product-card {
+  background: var(--white);
+  padding: 18px;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px var(--shadow);
+  transition: 0.3s;
+  text-align: center;
+}
+
+.product-card img {
+  width: 100%;
+  height: 270px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 26px var(--shadow);
+}
+
+/* =========================================
+   WHY CHOOSE US
+========================================= */
+.why-section {
+  background: var(--nude-light);
+}
+
+.why-card {
+  background: var(--white);
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px var(--shadow);
+  transition: 0.3s;
+}
+
+.why-card:hover {
+  transform: translateY(-6px);
+}
+
+/* =========================================
+   CTA SECTION
+========================================= */
+.cta-section {
+  background: var(--text-dark);
+  color: var(--white);
+  padding: 70px 20px;
+}
+
+.btn-cta {
+  background: var(--white);
+  color: var(--text-dark);
+  border-radius: 30px;
+  transition: 0.3s;
+}
+
+.btn-cta:hover {
+  background: var(--nude);
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+.animate-fade-in {
+  animation: fadeIn 1s ease-in-out forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-delay {
+  animation: fadeIn 1.4s ease-in-out forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-delay2 {
+  animation: fadeIn 1.7s ease-in-out forwards;
+  opacity: 0;
+}
+
+.animate-rise {
+  animation: rise 1.2s ease forwards;
+  opacity: 0;
+}
+
+.animate-fade-up {
+  animation: fadeUp 1.2s ease forwards;
+  opacity: 0;
+}
+
+.animate-scale {
+  animation: scaleIn 1.2s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(15px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    transform: translateY(25px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

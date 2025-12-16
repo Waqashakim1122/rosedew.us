@@ -1,0 +1,145 @@
+/* HERO BRAND CARDS – WALMART NAME + FLOATING ANIMATION */
+
+.brand-cards-wrapper {
+  padding: 4rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.brand-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3.5rem;
+  max-width: 860px;
+  width: 100%;
+}
+
+.brand-card {
+  position: relative;
+  height: 280px;
+  background: var(--light-bg);
+  border-radius: 2.8rem;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 18px 50px rgba(147,51,234,0.14);
+  border: 1.8px solid rgba(236,72,153,0.22);
+  transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: float 12s infinite ease-in-out;
+}
+
+/* Subtle floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+.brand-card:hover {
+  animation-play-state: paused;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  padding: 2.5rem;
+  z-index: 2;
+}
+
+.floating-glow {
+  position: absolute;
+  inset: -60%;
+  background: radial-gradient(circle at center, var(--brand-color)28 0%, transparent 65%);
+  filter: blur(70px);
+  opacity: 0;
+  transition: opacity 0.7s ease;
+  z-index: 1;
+  animation: pulseGlow 8s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 0.6; }
+}
+
+.brand-card:hover .floating-glow {
+  opacity: 0.7;
+}
+
+.brand-logo {
+  height: 92px;
+  width: auto;
+  max-width: 210px;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 30px rgba(0,0,0,0.18));
+  transition: all 0.6s ease;
+}
+
+.brand-card:hover .brand-logo {
+  transform: scale(1.14);
+  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.25));
+}
+
+/* Only Walmart shows name */
+.brand-name-text {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #111827;
+  letter-spacing: -0.5px;
+  margin-top: 0.5rem;
+}
+
+.card-accent {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background: var(--brand-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.brand-card:hover .card-accent {
+  transform: scaleX(1);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .brand-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 2.8rem;
+    max-width: 460px;
+  }
+  
+  .brand-card {
+    height: 240px;
+  }
+  
+  .brand-logo {
+    height: 82px;
+  }
+  
+  .brand-name-text {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-card {
+    height: 220px;
+  }
+  
+  .brand-logo {
+    height: 76px;
+  }
+  
+  .brand-name-text {
+    font-size: 1.5rem;
+  }
+}

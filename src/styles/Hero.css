@@ -1,0 +1,319 @@
+/* =========================================
+   THEMING & VARIABLES
+   ========================================= */
+:root {
+  /* LIGHT MODE (Default) */
+  --bg-hero: linear-gradient(135deg, #fffaf8 0%, #fdf8fb 40%, #f9f7fe 70%, #fdfafb 100%);
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --btn-sec-bg: #ffffff;
+  --btn-sec-text: #111827;
+  --btn-sec-border: rgba(236, 72, 153, 0.25);
+  --btn-sec-hover-border: #9333ea;
+  --blob-1: rgba(236, 72, 153, 0.2);
+  --blob-2: rgba(147, 51, 234, 0.2);
+  --glow-color: rgba(236, 72, 153, 0.2);
+}
+
+/* DARK MODE - Activates via system preference OR .dark-mode class */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-hero: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #000000 100%);
+    --text-primary: #f9fafb;
+    --text-secondary: #d1d5db;
+    --btn-sec-bg: rgba(255, 255, 255, 0.05); /* Glassmorphism style */
+    --btn-sec-text: #ffffff;
+    --btn-sec-border: rgba(236, 72, 153, 0.4);
+    --btn-sec-hover-border: #ec4899;
+    --blob-1: rgba(236, 72, 153, 0.15);
+    --blob-2: rgba(147, 51, 234, 0.15);
+    --glow-color: rgba(236, 72, 153, 0.35); /* Brighter glow in dark mode */
+  }
+}
+
+/* Also support manual toggle via class="dark-mode" on body/parent */
+.dark-mode .hero-section {
+  --bg-hero: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #000000 100%);
+  --text-primary: #f9fafb;
+  --text-secondary: #d1d5db;
+  --btn-sec-bg: rgba(255, 255, 255, 0.05);
+  --btn-sec-text: #ffffff;
+  --btn-sec-border: rgba(236, 72, 153, 0.4);
+  --btn-sec-hover-border: #ec4899;
+  --blob-1: rgba(236, 72, 153, 0.15);
+  --blob-2: rgba(147, 51, 234, 0.15);
+  --glow-color: rgba(236, 72, 153, 0.35);
+}
+
+/* =========================================
+   LAYOUT & STRUCTURE
+   ========================================= */
+.hero-section {
+  padding: 8rem 1rem;
+  min-height: 100vh;
+  background: var(--bg-hero); /* Uses variable */
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  transition: background 0.5s ease;
+}
+
+.hero-container {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  padding: 0 1rem;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* =========================================
+   BACKGROUND ANIMATION
+   ========================================= */
+.hero-bg-decoration {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.3;
+  animation: float 22s infinite ease-in-out;
+}
+
+.blob-1 { width: 500px; height: 500px; top: 10%; left: -10%; background: var(--blob-1); }
+.blob-2 { width: 400px; height: 400px; bottom: 10%; right: -5%; background: var(--blob-2); animation-delay: 8s; }
+
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(30px, -40px) rotate(5deg); }
+}
+
+/* =========================================
+   CONTENT STYLING
+   ========================================= */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centered by default based on design */
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* LOGO STYLES */
+.hero-logo-wrapper {
+  margin-bottom: 2.5rem;
+  position: relative;
+  display: inline-block;
+  z-index: 2;
+}
+
+.hero-logo {
+  /* Increased Size as requested */
+  height: 150px; 
+  width: auto;
+  max-width: 100%; /* Prevents overflow on very small screens */
+  object-fit: contain;
+  filter: drop-shadow(0 10px 30px rgba(236, 72, 153, 0.15));
+  transition: transform 0.4s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-logo:hover {
+  transform: scale(1.05);
+}
+
+.logo-glow {
+  position: absolute;
+  inset: -30px;
+  background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(40px);
+  z-index: -1;
+  animation: softPulse 4s infinite ease-in-out;
+}
+
+@keyframes softPulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+/* TEXT STYLES */
+.hero-tagline {
+  font-size: clamp(2.5rem, 5vw, 4.2rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--text-primary); /* Dark mode compatible */
+  margin: 0 0 1.5rem 0;
+  letter-spacing: -0.5px;
+  transition: color 0.3s ease;
+}
+
+.hero-tagline .gradient-text {
+  background: linear-gradient(135deg, #ec4899, #9333ea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--text-secondary); /* Dark mode compatible */
+  max-width: 620px;
+  margin: 0 auto 3rem;
+  line-height: 1.7;
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+/* BUTTONS */
+.hero-cta {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.btn-primary,
+.btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem 2.2rem;
+  border-radius: 3rem;
+  font-weight: 600;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  min-height: 56px;
+  white-space: nowrap; /* Prevents text breaking awkwardly */
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #ec4899, #9333ea);
+  color: white;
+  border: none;
+  box-shadow: 0 10px 30px rgba(236, 72, 153, 0.25);
+}
+
+.btn-primary:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(236, 72, 153, 0.35);
+}
+
+.btn-secondary {
+  background: var(--btn-sec-bg);
+  color: var(--btn-sec-text);
+  border: 2px solid var(--btn-sec-border);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+.btn-secondary:hover {
+  transform: translateY(-4px);
+  border-color: var(--btn-sec-hover-border);
+  box-shadow: 0 15px 35px rgba(147, 51, 234, 0.15);
+  background: rgba(255, 255, 255, 0.1); /* Subtle hover effect in dark mode */
+}
+
+/* CARDS WRAPPER */
+.hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.cards-wrapper {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* =========================================
+   RESPONSIVE MEDIA QUERIES
+   ========================================= */
+
+/* Tablets & Small Laptops (Max 992px) */
+@media (max-width: 992px) {
+  .hero-section {
+    padding-top: 6rem;
+    height: auto; /* Allow growth */
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr; /* Stack vertically */
+    text-align: center;
+    gap: 3rem;
+  }
+  
+  .hero-content { order: 1; }
+  .hero-visual { order: 2; margin-top: 2rem; }
+  
+  .hero-logo { height: 130px; }
+}
+
+/* Tablets & Large Phones (Max 768px) */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 6rem 1rem;
+  }
+
+  .hero-logo { 
+    height: 110px; 
+  }
+
+  .hero-tagline {
+    font-size: 2.8rem;
+  }
+  
+  .hero-cta {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn-primary, .btn-secondary {
+    width: 100%;
+    max-width: 320px; /* Nice width on mobile */
+  }
+}
+
+/* Small Phones (Max 480px) */
+@media (max-width: 480px) {
+  .hero-logo { 
+    height: 90px; 
+  }
+
+  .hero-tagline {
+    font-size: 2.2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* Ensure padding doesn't push content off screen */
+  .hero-container {
+    padding: 0 0.5rem;
+  }
+}

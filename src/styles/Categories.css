@@ -1,0 +1,344 @@
+/* =========================================
+   THEMING & VARIABLES
+   ========================================= */
+:root {
+  /* LIGHT MODE (Default) */
+  --bg-categories: linear-gradient(135deg, #fffaf8 0%, #fdf8fb 40%, #f9f7fe 70%, #fdfafb 100%);
+  --bg-overlay: radial-gradient(circle at 20% 80%, rgba(236, 72, 153, 0.04) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(147, 51, 234, 0.04) 0%, transparent 50%);
+  
+  --text-main: #111827; /* Dark text for light mode */
+  --text-secondary: #6b7280; /* Muted text */
+  --card-bg-fallback: #fff;
+  --card-border-default: rgba(240, 200, 220, 0.3);
+  --icon-bg: #ffffff;
+  --icon-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  
+  /* Blob Colors */
+  --blob-1: rgba(236, 72, 153, 0.15);
+  --blob-2: rgba(147, 51, 234, 0.15);
+  --blob-3: rgba(236, 72, 153, 0.1);
+}
+
+/* DARK MODE */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-categories: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #000000 100%);
+    --bg-overlay: radial-gradient(circle at 20% 80%, rgba(236, 72, 153, 0.08) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 20%, rgba(147, 51, 234, 0.08) 0%, transparent 50%);
+    
+    --text-main: #f8fafc; /* Light text for dark mode */
+    --text-secondary: #94a3b8; /* Muted light text */
+    --card-bg-fallback: rgba(255, 255, 255, 0.05); /* Glassy fallback */
+    --card-border-default: rgba(147, 51, 234, 0.3);
+    --icon-bg: rgba(255, 255, 255, 0.1);
+    --icon-shadow: none;
+    
+    /* Blob Colors - Slightly increased visibility */
+    --blob-1: rgba(236, 72, 153, 0.2);
+    --blob-2: rgba(147, 51, 234, 0.2);
+    --blob-3: rgba(236, 72, 153, 0.15);
+  }
+}
+
+/* MANUAL TOGGLE SUPPORT */
+.dark-mode .services-section {
+    --bg-categories: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #000000 100%);
+    --bg-overlay: radial-gradient(circle at 20% 80%, rgba(236, 72, 153, 0.08) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 20%, rgba(147, 51, 234, 0.08) 0%, transparent 50%);
+    --text-main: #f8fafc;
+    --text-secondary: #94a3b8;
+    --card-bg-fallback: rgba(255, 255, 255, 0.05);
+    --card-border-default: rgba(147, 51, 234, 0.3);
+    --icon-bg: rgba(255, 255, 255, 0.1);
+    --icon-shadow: none;
+    --blob-1: rgba(236, 72, 153, 0.2);
+    --blob-2: rgba(147, 51, 234, 0.2);
+    --blob-3: rgba(236, 72, 153, 0.15);
+}
+
+
+/* =========================================
+   GENERAL STRUCTURE & BACKGROUND
+   ========================================= */
+.services-section {
+  padding: 5rem 1rem;
+  background: var(--bg-categories);
+  position: relative;
+  overflow: hidden;
+  transition: background 0.5s ease;
+}
+
+.services-section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: var(--bg-overlay);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.background-decoration {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.blob {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.3;
+  animation: float 20s infinite ease-in-out;
+}
+
+.blob-1 { top: 10%; left: 5%; background: var(--blob-1); }
+.blob-2 { top: 30%; right: 8%; background: var(--blob-2); animation-delay: 7s; }
+.blob-3 { bottom: 15%; left: 50%; background: var(--blob-3); animation-delay: 14s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-30px) scale(1.1); }
+}
+
+.services-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================
+   HEADER
+   ========================================= */
+.services-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.services-badge {
+  display: inline-block;
+  padding: 0.625rem 1.5rem;
+  background: linear-gradient(135deg, #ec4899, #9333ea);
+  color: white;
+  border-radius: 50px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.services-title {
+  font-size: clamp(2.5rem, 6vw, 3.8rem);
+  font-weight: 800;
+  color: var(--text-main); /* Uses variable */
+  margin-bottom: 1rem;
+  line-height: 1.1;
+  transition: color 0.3s ease;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #ec4899, #9333ea);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.services-subtitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+  color: var(--text-secondary); /* Uses variable */
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.7;
+  transition: color 0.3s ease;
+}
+
+/* =========================================
+   CARD GRID
+   ========================================= */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* FINAL: LIGHT BRAND TINTED CARDS */
+.service-card {
+  /* Dynamic Background for Light Mode */
+  background: linear-gradient(135deg, 
+    var(--brand-color-light) 0%, 
+    var(--brand-color-medium) 100%
+  );
+  background-color: var(--brand-color-light); /* Fallback */
+  
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 8px 25px rgba(147, 51, 234, 0.08);
+  border: 1px solid var(--card-border-default); /* Uses variable */
+  text-decoration: none;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  
+  /* Dark Mode specific card styling (overrides light mode gradient) */
+  .dark-mode & {
+    background: linear-gradient(135deg, 
+      var(--card-bg-fallback) 0%, 
+      rgba(255,255,255,0.02) 100%
+    );
+    backdrop-filter: blur(5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  }
+}
+
+.service-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+  border-color: var(--brand-color);
+  
+  /* Hover effect for Light Mode (reverse gradient) */
+  background: linear-gradient(135deg, 
+    var(--brand-color-medium) 0%, 
+    var(--brand-color-light) 100%
+  );
+  
+  /* Dark Mode Hover Override */
+  .dark-mode & {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(236, 72, 153, 0.25);
+  }
+}
+
+.card-accent-bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+  background: var(--brand-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s ease;
+}
+
+.service-card:hover .card-accent-bar {
+  transform: scaleX(1);
+}
+
+.service-icon-wrapper {
+  width: 100px;
+  height: 100px;
+  background: var(--icon-bg); /* Uses variable */
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--icon-shadow); /* Uses variable */
+  transition: all 0.4s ease;
+}
+
+.service-card:hover .service-icon-wrapper {
+  transform: scale(1.1);
+}
+
+.icon-glow {
+  position: absolute;
+  inset: -10px;
+  background: var(--brand-color);
+  border-radius: 1rem;
+  filter: blur(20px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.service-card:hover .icon-glow {
+  opacity: 0.3;
+}
+
+.service-logo {
+  width: 80%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* TEXT VISUALIZATION FIX */
+.service-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-main); /* Uses variable */
+  margin-bottom: 0.75rem;
+  transition: color 0.3s ease;
+}
+
+.service-desc {
+  font-size: 1rem;
+  color: var(--text-secondary); /* Uses variable */
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+  transition: color 0.3s ease;
+}
+
+.service-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background: var(--brand-color);
+  color: white;
+  border-radius: 3rem;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  transition: all 0.3s ease;
+  margin-top: auto;
+}
+
+.service-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.service-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.service-btn:hover svg {
+  transform: translateX(6px);
+}
+
+.corner-decoration {
+  position: absolute;
+  bottom: -30px;
+  right: -30px;
+  width: 100px;
+  height: 100px;
+  background: var(--brand-color);
+  border-radius: 50%;
+  opacity: 0.1;
+  transition: opacity 0.4s ease;
+}
+
+.service-card:hover .corner-decoration {
+  opacity: 0.2;
+}
+
+/* =========================================
+   RESPONSIVENESS
+   ========================================= */
+
+/* Mobile */
+@media (max-width: 640px) {
+  .services-section { padding: 4rem 1rem; }
+  .service-card { padding: 1.5rem; }
+  .service-icon-wrapper { width: 90px; height: 90px; }
+}

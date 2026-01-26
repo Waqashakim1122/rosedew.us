@@ -55,7 +55,7 @@ export default function Contact() {
     emailjs
       .send(
         "service_v7ddpcj",      // ✅ YOUR SERVICE ID
-        "template_kpxpbzk",     // ✅ YOUR TEMPLATE ID
+        "yj5dohr",              // ✅ UPDATED TEMPLATE ID (was template_kpxpbzk)
         {
           name: formData.name,
           email: formData.email,
@@ -107,7 +107,7 @@ export default function Contact() {
             Connect With <span className="gradient-text">Our Team</span>
           </h1>
           <p className="contact-subtitle">
-            We’d love to hear from you. Send us a message anytime.
+            We'd love to hear from you. Send us a message anytime.
           </p>
         </motion.header>
 

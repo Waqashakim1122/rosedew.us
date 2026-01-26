@@ -55,7 +55,7 @@ export default function Contact() {
     emailjs
       .send(
         "service_v7ddpcj",      // ✅ YOUR SERVICE ID
-        "yj5dohr",              // ✅ UPDATED TEMPLATE ID (was template_kpxpbzk)
+        "template_kpxpbzk",              // ✅ UPDATED TEMPLATE ID (was template_kpxpbzk)
         {
           name: formData.name,
           email: formData.email,
@@ -235,3 +235,4 @@ export default function Contact() {
     </section>
   );
 }
+

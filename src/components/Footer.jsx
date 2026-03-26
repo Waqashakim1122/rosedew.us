@@ -1,7 +1,7 @@
 // src/components/Footer.jsx
 import React from "react";
-import { 
-  Mail, Phone, MapPin, Facebook, Instagram, Twitter, Youtube, 
+import {
+  Mail, Phone, MapPin, Facebook, Instagram, Twitter, Youtube,
   Sparkles, Home, Users, Package, Award, BookOpen, ShoppingBag,
   Store, ShoppingCart, Globe, Heart
 } from "lucide-react";
@@ -10,16 +10,13 @@ import "../styles/Footer.css";
 function Footer() {
   const currentYear = new Date().getFullYear();
 
-  // Replace with your real store links
   const stores = {
     amazon: "https://amazon.com/yourstore",
     walmart: "https://walmart.com/yourstore",
     ebay: "https://ebay.com/usr/yourstore",
     shopify: "https://yourbrand.myshopify.com",
-    etsy: "https://etsy.com/shop/yourstore"
   };
 
-  // Social media links
   const socialLinks = {
     instagram: "https://instagram.com/rosedew",
     facebook: "https://facebook.com/rosedew",
@@ -30,39 +27,39 @@ function Footer() {
 
   return (
     <footer className="footer-section" aria-label="Main footer">
-      {/* Top decorative element */}
       <div className="footer-top-decoration">
         <Sparkles size={24} className="footer-sparkle" />
       </div>
 
       <div className="footer-container">
         <div className="footer-grid">
-          
+
           {/* Brand Column */}
           <div className="footer-brand-column">
             <div className="footer-brand-wrapper">
-              <h2 className="footer-brand">
+              {/* ✅ FIXED: was <h2>, changed to <h3> — decorative brand name, not a page section title */}
+              <h3 className="footer-brand">
                 Rose <span className="gradient-text">Dew</span>
-              </h2>
+              </h3>
               <div className="footer-brand-badge">
                 <Sparkles size={14} />
                 <span>Luxury Redefined</span>
               </div>
             </div>
             <p className="footer-brand-description">
-              A global luxury Redefined dedicated to timeless elegance, 
+              A global luxury Redefined dedicated to timeless elegance,
               exquisite craftsmanship, and unparalleled customer experiences.
             </p>
-            
-            {/* Newsletter Subscription */}
+
+            {/* Newsletter */}
             <div className="newsletter-section">
               <h4 className="newsletter-title">Stay in the Loop</h4>
               <p className="newsletter-subtitle">Subscribe for exclusive offers and style inspiration</p>
               <form className="newsletter-form" onSubmit={(e) => e.preventDefault()}>
                 <div className="newsletter-input-group">
-                  <input 
-                    type="email" 
-                    placeholder="Your email address" 
+                  <input
+                    type="email"
+                    placeholder="Your email address"
                     className="newsletter-input"
                     aria-label="Email for newsletter subscription"
                   />
@@ -76,7 +73,7 @@ function Footer() {
 
           {/* Quick Links */}
           <div className="footer-column">
-            <h3 className="footer-column-title">Quick Links</h3>
+            <h4 className="footer-column-title">Quick Links</h4>
             <ul className="footer-links">
               <li><a href="#home" className="footer-link"><Home size={16} /> Home</a></li>
               <li><a href="#about" className="footer-link"><Users size={16} /> About Us</a></li>
@@ -89,7 +86,7 @@ function Footer() {
 
           {/* Where to Shop */}
           <div className="footer-column">
-            <h3 className="footer-column-title">Where to Shop</h3>
+            <h4 className="footer-column-title">Where to Shop</h4>
             <ul className="footer-links">
               <li>
                 <a href={stores.amazon} target="_blank" rel="noopener noreferrer" className="footer-link store-link">
@@ -103,7 +100,6 @@ function Footer() {
                   Shopify Store
                 </a>
               </li>
-              
               <li>
                 <a href={stores.ebay} target="_blank" rel="noopener noreferrer" className="footer-link store-link">
                   <Globe size={18} className="brand-icon ebay-icon" />
@@ -121,7 +117,7 @@ function Footer() {
 
           {/* Contact & Social */}
           <div className="footer-column">
-            <h3 className="footer-column-title">Get in Touch</h3>
+            <h4 className="footer-column-title">Get in Touch</h4>
             <ul className="footer-contact">
               <li className="contact-item">
                 <Mail size={16} className="contact-icon" />
@@ -136,23 +132,23 @@ function Footer() {
                 <span>Cincinnati Ohio</span>
               </li>
             </ul>
-            
+
             <div className="social-section">
               <h4 className="social-title">Follow Us</h4>
               <div className="social-links">
-                <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Instagram">
+                <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Rose Dew on Instagram">
                   <Instagram size={20} className="social-icon" />
                 </a>
-                <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Facebook">
+                <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Rose Dew on Facebook">
                   <Facebook size={20} className="social-icon" />
                 </a>
-                <a href={socialLinks.twitter} target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Twitter">
+                <a href={socialLinks.twitter} target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Rose Dew on Twitter">
                   <Twitter size={20} className="social-icon" />
                 </a>
-                <a href={socialLinks.pinterest} target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Pinterest">
+                <a href={socialLinks.pinterest} target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Rose Dew on Pinterest">
                   <Heart size={20} className="social-icon pinterest-icon" />
                 </a>
-                <a href={socialLinks.youtube} target="_blank" rel="noopener noreferrer" className="social-link" aria-label="YouTube">
+                <a href={socialLinks.youtube} target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Rose Dew on YouTube">
                   <Youtube size={20} className="social-icon" />
                 </a>
               </div>
@@ -175,7 +171,7 @@ function Footer() {
           </div>
         </div>
 
-        {/* Copyright - CENTERED */}
+        {/* Copyright */}
         <div className="footer-copyright-centered">
           <p className="copyright-text">
             © {currentYear} <span className="copyright-brand">Rose Dew</span>. All rights reserved.

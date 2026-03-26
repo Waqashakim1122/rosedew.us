@@ -41,9 +41,12 @@ function About() {
             <Sparkles size={16} />
             <span>Our Story</span>
           </div>
-          <h1 className="about-title">
+
+          {/* ✅ FIXED: was <h1>, changed to <h2> */}
+          <h2 className="about-title">
             Welcome to <span className="highlight">Rose Dew</span>
-          </h1>
+          </h2>
+
           <p className="about-intro">
             A place built on trust, simplicity, and an experience made with care.
           </p>
@@ -60,7 +63,7 @@ function About() {
           <motion.div variants={itemVariants} className="story-card">
             <div className="card-decoration"></div>
             <div className="card-content">
-              <h2 className="story-title">How It All Began</h2>
+              <h3 className="story-title">How It All Began</h3>
               <div className="story-text">
                 <p>
                   Rose Dew began with one simple goal — to create a smooth,
@@ -103,7 +106,7 @@ function About() {
           className="values-section"
         >
           <motion.div variants={itemVariants} className="values-header">
-            <h2 className="values-title">What Guides Us</h2>
+            <h3 className="values-title">What Guides Us</h3>
             <p className="values-subtitle">
               Principles that shape every step of our journey
             </p>
@@ -174,7 +177,7 @@ function About() {
         >
           <div className="contact-header">
             <Award size={24} />
-            <h2 className="contact-title">Want to Know More?</h2>
+            <h3 className="contact-title">Want to Know More?</h3>
           </div>
           <p className="contact-text">
             We're always here to help. Whether it's a question, a suggestion, or

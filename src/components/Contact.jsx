@@ -6,7 +6,7 @@ import emailjs from "emailjs-com";
 import "../styles/Contact.css";
 
 export default function Contact() {
-  const [status, setStatus] = useState(""); // "", "sending", "success", "error"
+  const [status, setStatus] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -14,8 +14,6 @@ export default function Contact() {
     message: ""
   });
   const [errors, setErrors] = useState({});
-
-  /* ================= FORM HANDLERS ================= */
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,8 +34,6 @@ export default function Contact() {
     return newErrors;
   };
 
-  /* ================= EMAIL SUBMIT ================= */
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (status === "sending") return;
@@ -54,25 +50,20 @@ export default function Contact() {
 
     emailjs
       .send(
-        "service_v7ddpcj",      // ✅ YOUR SERVICE ID
-        "template_kpxpbzk",              // ✅ UPDATED TEMPLATE ID (was template_kpxpbzk)
+        "service_v7ddpcj",
+        "template_kpxpbzk",
         {
           name: formData.name,
           email: formData.email,
           subject: formData.subject || "No Subject",
           message: formData.message,
         },
-        "1ymsRB9kQJalEuuSI"     // ✅ YOUR PUBLIC KEY
+        "1ymsRB9kQJalEuuSI"
       )
       .then(
         () => {
           setStatus("success");
-          setFormData({
-            name: "",
-            email: "",
-            subject: "",
-            message: ""
-          });
+          setFormData({ name: "", email: "", subject: "", message: "" });
           setTimeout(() => setStatus(""), 5000);
         },
         () => {
@@ -82,11 +73,8 @@ export default function Contact() {
       );
   };
 
-  /* ================= UI ================= */
-
   return (
     <section id="contact" className="contact-section">
-      {/* Background decorative blobs */}
       <div className="contact-background-decoration">
         <div className="contact-blob contact-blob-1"></div>
         <div className="contact-blob contact-blob-2"></div>
@@ -103,9 +91,12 @@ export default function Contact() {
             <Sparkles size={16} />
             <span>Contact Us</span>
           </div>
-          <h1 className="contact-title">
+
+          {/* ✅ FIXED: was <h1>, changed to <h2> */}
+          <h2 className="contact-title">
             Connect With <span className="gradient-text">Our Team</span>
-          </h1>
+          </h2>
+
           <p className="contact-subtitle">
             We'd love to hear from you. Send us a message anytime.
           </p>
@@ -163,41 +154,31 @@ export default function Contact() {
               {Object.keys(errors).length > 0 && (
                 <div className="error-messages">
                   {Object.values(errors).map((error, index) => (
-                    <p key={index} className="error-text">
-                      {error}
-                    </p>
+                    <p key={index} className="error-text">{error}</p>
                   ))}
                 </div>
               )}
 
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 className="form-submit"
                 disabled={status === "sending"}
               >
                 {status === "sending" ? (
-                  <>
-                    <Loader className="spin" size={18} />
-                    Sending...
-                  </>
+                  <><Loader className="spin" size={18} />Sending...</>
                 ) : (
-                  <>
-                    Send Message <Send size={18} />
-                  </>
+                  <>Send Message <Send size={18} /></>
                 )}
               </button>
-              
-              <p className="form-note">
-                All fields marked with * are required.
-              </p>
+
+              <p className="form-note">All fields marked with * are required.</p>
             </form>
           </motion.div>
         </div>
 
-        {/* ================= TOAST NOTIFICATIONS ================= */}
         <AnimatePresence>
           {status === "success" && (
-            <motion.div 
+            <motion.div
               className="toast-notification success"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -208,13 +189,11 @@ export default function Contact() {
                 <h4>Message Sent Successfully!</h4>
                 <p>We've received your message and will get back to you soon.</p>
               </div>
-              <button onClick={() => setStatus("")}>
-                <XCircle size={18} />
-              </button>
+              <button onClick={() => setStatus("")}><XCircle size={18} /></button>
             </motion.div>
           )}
           {status === "error" && (
-            <motion.div 
+            <motion.div
               className="toast-notification error"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -225,9 +204,7 @@ export default function Contact() {
                 <h4>Failed to Send Message</h4>
                 <p>Please check your connection and try again.</p>
               </div>
-              <button onClick={() => setStatus("")}>
-                <XCircle size={18} />
-              </button>
+              <button onClick={() => setStatus("")}><XCircle size={18} /></button>
             </motion.div>
           )}
         </AnimatePresence>
@@ -235,4 +212,3 @@ export default function Contact() {
     </section>
   );
 }
-

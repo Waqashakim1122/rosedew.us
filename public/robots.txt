@@ -1,0 +1,14 @@
+# robots.txt for rosedew.us
+# Learn more: https://www.robotstxt.org/robotstxt.html
+
+# Allow all search engines to crawl everything
+User-agent: *
+Allow: /
+
+# Block access to any build or config files
+Disallow: /static/js/
+Disallow: /static/css/
+Disallow: /*.json$
+
+# Sitemap location
+Sitemap: https://www.rosedew.us/sitemap.xml

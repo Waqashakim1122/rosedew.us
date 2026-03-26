@@ -1,3 +1,4 @@
+// src/components/WhyChoose.jsx
 import React from "react";
 import { motion } from "framer-motion";
 import {
@@ -25,13 +26,12 @@ const itemVariants = {
 };
 
 export default function WhyChoose() {
-  // Distinct colors for each card - optimized for both light and dark modes
   const reasons = [
-    { 
-      icon: Award, 
-      title: "Premium Quality", 
+    {
+      icon: Award,
+      title: "Premium Quality",
       text: "Every item is thoughtfully crafted to ensure superior quality and lasting elegance.",
-      color: "#9333ea", // Purple
+      color: "#9333ea",
       darkColor: "#a855f7",
       features: [
         { icon: CheckCircle, text: "Quality Inspected" },
@@ -39,11 +39,11 @@ export default function WhyChoose() {
         { icon: ShieldCheck, text: "Traceable Sourcing" }
       ]
     },
-    { 
-      icon: Sparkles, 
-      title: "Affordable Luxury", 
+    {
+      icon: Sparkles,
+      title: "Affordable Luxury",
       text: "Experience refined luxury designed to be accessible without compromise.",
-      color: "#ec4899", // Pink
+      color: "#ec4899",
       darkColor: "#f472b6",
       features: [
         { icon: Package, text: "Best Value" },
@@ -51,11 +51,11 @@ export default function WhyChoose() {
         { icon: Star, text: "Exclusive Offers" }
       ]
     },
-    { 
-      icon: Truck, 
-      title: "Fast Shipping", 
+    {
+      icon: Truck,
+      title: "Fast Shipping",
       text: "Reliable, secure, and timely delivery through our trusted logistics partners.",
-      color: "#3b82f6", // Blue (changed from #4f46e5 for better distinction)
+      color: "#3b82f6",
       darkColor: "#60a5fa",
       features: [
         { icon: Zap, text: "Express Delivery" },
@@ -63,11 +63,11 @@ export default function WhyChoose() {
         { icon: Globe, text: "Global Reach" }
       ]
     },
-    { 
-      icon: Headphones, 
-      title: "Customer First", 
+    {
+      icon: Headphones,
+      title: "Customer First",
       text: "Dedicated support to ensure a seamless and delightful shopping experience.",
-      color: "#10b981", // Emerald Green
+      color: "#10b981",
       darkColor: "#34d399",
       features: [
         { icon: ShieldCheck, text: "24/7 Support" },
@@ -115,16 +115,19 @@ export default function WhyChoose() {
             <Sparkles size={16} />
             <span>Why Choose Us</span>
           </div>
-          <h1 className="why-title">
+
+          {/* ✅ FIXED: was <h1>, changed to <h2> */}
+          <h2 className="why-title">
             The <span className="gradient-text">Rose Dew</span> Difference
-          </h1>
+          </h2>
+
           <p className="why-subtitle">
-            Discover what sets us apart. Experience premium quality, exceptional service, 
+            Discover what sets us apart. Experience premium quality, exceptional service,
             and unmatched value that thousands of customers trust worldwide.
           </p>
         </motion.header>
 
-        {/* Cards Grid - 4 Cards in One Row */}
+        {/* Cards Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -137,9 +140,9 @@ export default function WhyChoose() {
               key={index}
               variants={itemVariants}
               className="why-card"
-              style={{ 
+              style={{
                 '--card-color': reason.color,
-                '--card-color-dark': reason.darkColor 
+                '--card-color-dark': reason.darkColor
               }}
               whileHover={{ y: -8, transition: { duration: 0.3 } }}
             >
@@ -154,10 +157,10 @@ export default function WhyChoose() {
                 <div className="icon-glow"></div>
               </div>
 
-              {/* Content */}
-              <h2 className="why-card-title">{reason.title}</h2>
+              {/* ✅ FIXED: was <h2>, changed to <h3> */}
+              <h3 className="why-card-title">{reason.title}</h3>
               <p className="why-card-text">{reason.text}</p>
-              
+
               {/* Features */}
               <div className="why-features">
                 {reason.features.map((feature, idx) => (
@@ -231,25 +234,25 @@ export default function WhyChoose() {
             <h3>Ready to Experience Luxury?</h3>
             <p>Discover why thousands choose Rose Dew for their premium shopping needs.</p>
           </div>
-          <button 
-            className="why-cta-button" 
+          <button
+            className="why-cta-button"
             onClick={handleShopClick}
             aria-label="Shop Rose Dew products"
           >
             <span>Shop Now</span>
-            <svg 
-              width="18" 
-              height="18" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
               strokeWidth="2.5"
               aria-hidden="true"
             >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                d="M17 8l4 4m0 0l-4 4m4-4H3" 
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
               />
             </svg>
           </button>

@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 import "../styles/HeroBrandCards.css";
 
 const brands = [
-  { name: "", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg", color: "#FF9900", light: "#fff9f0", link: "https://amazon.com" },
-  { name: "Walmart", logo: "https://i5.walmartimages.com/dfw/63fd9f59-14e2/9d304ce6-96de-4331-b8ec-c5191226d378/v1/spark-icon.svg", color: "#0071CE", light: "#f0f8ff", link: "https://walmart.com" },
-  { name: "", logo: "https://upload.wikimedia.org/wikipedia/commons/1/1b/EBay_logo.svg", color: "#E53238", light: "#fff0f0", link: "https://ebay.com" },
-  { name: "", logo: "https://upload.wikimedia.org/wikipedia/commons/0/0e/Shopify_logo_2018.svg", color: "#95BF47", light: "#f5f9f0", link: "https://shopify.com" },
+  { name: "", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg", color: "#FF9900", light: "#fff9f0", link: "https://amazon.com", alt: "Shop Rose Dew on Amazon" },
+  { name: "Walmart", logo: "https://i5.walmartimages.com/dfw/63fd9f59-14e2/9d304ce6-96de-4331-b8ec-c5191226d378/v1/spark-icon.svg", color: "#0071CE", light: "#f0f8ff", link: "https://walmart.com", alt: "Shop Rose Dew on Walmart" },
+  { name: "", logo: "https://upload.wikimedia.org/wikipedia/commons/1/1b/EBay_logo.svg", color: "#E53238", light: "#fff0f0", link: "https://ebay.com", alt: "Shop Rose Dew on eBay" },
+  { name: "", logo: "https://upload.wikimedia.org/wikipedia/commons/0/0e/Shopify_logo_2018.svg", color: "#95BF47", light: "#f5f9f0", link: "https://shopify.com", alt: "Shop Rose Dew on Shopify" },
 ];
 
 export default function HeroBrandCards() {
@@ -56,11 +56,11 @@ export default function HeroBrandCards() {
               role="button"
               tabIndex={0}
               onKeyDown={(e) => e.key === "Enter" && handleClick(brand.link)}
-              aria-label={`Shop on ${brand.name || 'Amazon/eBay/Shopify'}`}
+              aria-label={`Shop Rose Dew on ${brand.name || brand.alt.split("on ")[1]}`}
             >
               <div className="card-inner">
                 <div className="floating-glow"></div>
-                <img src={brand.logo} alt="" className="brand-logo" />
+                <img src={brand.logo} alt={brand.alt} className="brand-logo" />
                 
                 {/* Only Walmart shows name */}
                 {brand.name && (
